@@ -21,4 +21,4 @@ def create_output(probabilities, text_ids, text_classes,
     
     # Write the data into a file
     df = pd.DataFrame(final_array)
-    df.to_csv(output_file, header=None)
+    df.to_csv(output_file, header=None, index=False)
