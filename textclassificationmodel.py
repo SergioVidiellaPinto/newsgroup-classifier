@@ -65,15 +65,16 @@ class TextClassificationModel():
                                        cv = self.cross_validation)
     
             grid_search = grid_search.fit(data, target)
-            self.best_parameters = grid_search.best_params_
+            self.best_params = grid_search.best_params_
             self.best_score = grid_search.best_score_
             
             print("Found best parameters")
-            print(self.best_parameters)
+            print(self.best_params)
             print("Updating the model")
             self.update_model()
             
         print("Training the model")
+        print(self.text_clf.get_params())
         self.text_clf.fit(data, target) 
         
         

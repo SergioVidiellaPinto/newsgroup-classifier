@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+import pandas as pd 
 
-def create_output(probabilities, text_ids, text_classes, output_file):
+def create_output(probabilities, text_ids, text_classes,
+                  output_file='sergio-vidiella_submission.csv'):
     """
     Generate a CSV with the expected format
     """
@@ -18,4 +20,5 @@ def create_output(probabilities, text_ids, text_classes, output_file):
     final_array = np.insert(joined_array, 0, ids_array, axis=1)
     
     # Write the data into a file
-    final_array.tofile('sergio-vidieilla_submission.csv',sep=', ',format='%10.5f')
+    df = pd.DataFrame(final_array)
+    df.to_csv(output_file, header=None)

@@ -11,11 +11,11 @@ if __name__ == '__main__':
     
     # Obtain the input
     train_dataset, test_dataset, text_classes = prepare_input()
-    optimization_params = {'vect__stop_words': ['english'],
-                           'vect__strip_accents': ['unicode'],
-                           'tfidf__norm': ['l1', 'l2'],
-                           'clf__loss': ['modified_huber','log'],
-                           'clf__alpha': [1e-3, 1e-4]
+    optimization_params = {'vect__stop_words': ["english"],
+                           'vect__strip_accents': ["unicode"],
+                           'tfidf__norm': ["l1", "l2"],
+                           'clf__loss': ["modified_huber", "log"],
+                           'clf__alpha': [1e-3, 1e-4, 1e-5]
                           }
     text_clf = TextClassificationModel(optimization_params=optimization_params)
     
