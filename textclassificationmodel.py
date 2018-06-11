@@ -10,7 +10,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 class TextClassificationModel():
     
     def __init__(self, optimization_params={}, params={}, scoring="accuracy",
-                 cross_validation=10):
+                 cross_validation=10, best_score=0.0):
         """
         Create the Classification Model Pipeline
         The model has thre main steps
@@ -25,7 +25,8 @@ class TextClassificationModel():
         self.best_params = params
         self.optimization_params = optimization_params
         self.scoring = scoring
-        self.best_score = 0.0
+        self.best_score = best_score
+        self.cross_validation = cross_validation
         
         self.text_clf = Pipeline([('vect', CountVectorizer()),
                                   ('tfidf', TfidfTransformer()),
@@ -67,6 +68,8 @@ class TextClassificationModel():
             self.best_parameters = grid_search.best_params_
             self.best_score = grid_search.best_score_
             
+            print("Found best parameters")
+            print(self.best_parameters)
             print("Updating the model")
             self.update_model()
             

@@ -12,10 +12,10 @@ if __name__ == '__main__':
     # Obtain the input
     train_dataset, test_dataset, text_classes = prepare_input()
     optimization_params = {'vect__stop_words': ['english'],
-                           'vect__strip_accents': [None, 'unicode'],
-                           'tfidf__norm': [None, 'l1', 'l2'],
-                           'clf__loss': ['log', 'modifier_hinge','squared_hinge'],
-                           'alpha': [1e-2, 1e-3, 1e-4]
+                           'vect__strip_accents': ['unicode'],
+                           'tfidf__norm': ['l1', 'l2'],
+                           'clf__loss': ['modified_huber','log'],
+                           'clf__alpha': [1e-3, 1e-4]
                           }
     text_clf = TextClassificationModel(optimization_params=optimization_params)
     
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     prediction = text_clf.make_prediction(test_dataset.data, probability=False)
     score = np.mean(prediction == test_dataset.target) 
     
-    print("Train accuracy: {}".format(text_clf.get_best_score))
+    print("Train accuracy: {}".format(text_clf.get_best_score()))
     print("Test accuracy: {}".format(score))
     
     # Now create the expected ouput

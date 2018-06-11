@@ -63,9 +63,9 @@ def prepare_input():
     
     # The paths are fixed in this example
     # We could include them in a config path
-    data_path = "{}{}".format(os.getcwd(), os.sep)
-    train_path = "{}{}20news-bydate-train{}".format(data_path, os.sep, os.sep)
-    test_path = "{}{}20news-bydate-test{}".format(data_path, os.sep, os.sep)
+    data_path = "{}{}20news-bydate{}".format(os.getcwd(), os.sep, os.sep)
+    train_path = "{}20news-bydate-train{}".format(data_path, os.sep)
+    test_path = "{}20news-bydate-test{}".format(data_path, os.sep)
     
     text_classes = get_text_classes(train_path)
     
