@@ -5,6 +5,11 @@ import numpy as np
 from inputreader import prepare_input
 from outputwriter import create_output
 from textclassificationmodel import TextClassificationModel
+
+from sklearn.metrics import recall_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import confusion_matrix
         
 
 if __name__ == '__main__':
@@ -33,3 +38,14 @@ if __name__ == '__main__':
     prob_prediction = text_clf.make_prediction(test_dataset.data)
     create_output(prob_prediction, test_dataset.id, text_classes)
 
+    cm = confusion_matrix(test_dataset.target, prediction)
+    recall = recall_score(test_dataset.target, prediction, average='weighted')
+    precision = precision_score(test_dataset.target, prediction,
+                                average='weighted')
+    f1 = f1_score(test_dataset.target, prediction, average='weighted')
+    
+    
+    print(cm)
+    print("Recall: {}".format(recall))
+    print("Precision: {}".format(precision))
+    print("F1 Score: {}".format(f1))
