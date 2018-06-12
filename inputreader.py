@@ -36,7 +36,11 @@ def file_structure_to_dataset(input_path, classes_list):
                         with open(file_path, 'r') as myfile:
                             # Save the data, and identifier of the class 
                             # (target) and the name of the file (id)
-                            dataset.add_data(myfile.read(), target, filename)
+                            try:
+                                dataset.add_data(myfile.read().decode('iso-8859-1'), target, filename)
+                            except Exception as e:
+                                print(filename)
+                                print(target)
         
         return dataset
     
