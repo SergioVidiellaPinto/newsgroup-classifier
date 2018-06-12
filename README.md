@@ -10,7 +10,7 @@ Instructions and deployment have been tested in a Windows7 and a Centos7 machine
 
 ### Prerequisites
 
-* Python 3.6
+* Python 2.7
 * scikit-learn 0.19.1
 * pandas 0.23.0
 
